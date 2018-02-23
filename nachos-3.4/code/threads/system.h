@@ -29,6 +29,9 @@ extern Interrupt *interrupt;			// interrupt status
 extern Statistics *stats;			// performance metrics
 extern Timer *timer;				// the hardware alarm clock
 
+#define MAX_THREAD 128
+extern int threadIDs[MAX_THREAD];
+
 #ifdef USER_PROGRAM
 #include "machine.h"
 extern Machine* machine;	// user program memory and registers
@@ -50,8 +53,3 @@ extern PostOffice* postOffice;
 #endif
 
 #endif // SYSTEM_H
-
-#ifndef MAX_THREAD
-#define MAX_THREAD 128
-
-extern int threadIDs[MAX_THREAD];
