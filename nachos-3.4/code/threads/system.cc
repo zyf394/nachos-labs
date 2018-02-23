@@ -162,6 +162,13 @@ Initialize(int argc, char **argv)
 #ifdef NETWORK
     postOffice = new PostOffice(netname, rely, 10);
 #endif
+
+#ifdef MAX_THREAD
+    for(int i = 0; i< MAX_THREAD; i++)
+    {
+        threadIDs[i] = 0;
+    }
+#endif
 }
 
 //----------------------------------------------------------------------
@@ -194,10 +201,3 @@ Cleanup()
     
     Exit(0);
 }
-
-#ifdef MAX_THREAD
-    for(int i = 0; i< MAX_THREAD; i++)
-    {
-        threadIDs[i] = 0;
-    }
-#endif
