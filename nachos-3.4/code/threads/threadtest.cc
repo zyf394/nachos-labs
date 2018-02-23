@@ -14,7 +14,13 @@
 
 // testnum is set in main.cc
 int testnum = 1;
-
+#ifdef MAX_THREAD
+    int threadIDs[MAX_THREAD]
+    for(int i = 0; i< MAX_THREAD; i++)
+    {
+        threadIDs[i] = 0;
+    }
+#endif
 //----------------------------------------------------------------------
 // SimpleThread
 // 	Loop 5 times, yielding the CPU to another ready thread 
