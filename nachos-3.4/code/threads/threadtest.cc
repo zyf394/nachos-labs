@@ -33,7 +33,9 @@ SimpleThread(int which)
 	printf("*** thread %d looped %d times\n", which, num);
         currentThread->Yield();
     }
-    for(i=0;i<threadIDs.length;i++){
+
+    int i;
+    for(i = 0; i < MAX_THREAD; i++){
     printf("%d ",threadIDs[i]);
     }
 }
