@@ -201,5 +201,3 @@ Cleanup()
         threadIDs[i] = 0;
     }
 #endif
-
-printf(threadIDs);
