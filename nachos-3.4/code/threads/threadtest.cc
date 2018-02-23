@@ -15,7 +15,8 @@
 // testnum is set in main.cc
 int testnum = 1;
 #ifdef MAX_THREAD
-    int threadIDs[MAX_THREAD]
+    int threadIDs[MAX_THREAD];
+    int i;
     for(int i = 0; i< MAX_THREAD; i++)
     {
         threadIDs[i] = 0;
