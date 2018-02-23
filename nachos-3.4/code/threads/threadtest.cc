@@ -16,11 +16,6 @@
 int testnum = 1;
 #ifdef MAX_THREAD
     int threadIDs[MAX_THREAD];
-    int i;
-    for(i = 0; i< MAX_THREAD; i++)
-    {
-        threadIDs[i] = 0;
-    }
 #endif
 //----------------------------------------------------------------------
 // SimpleThread
