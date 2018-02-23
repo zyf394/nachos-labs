@@ -50,3 +50,10 @@ extern PostOffice* postOffice;
 #endif
 
 #endif // SYSTEM_H
+
+#ifndef MAX_THREAD
+#define MAX_THREAD 128
+
+extern int threadIDs[MAX_THREAD];
+
+printf(threadIDs);
