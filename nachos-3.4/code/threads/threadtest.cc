@@ -48,7 +48,7 @@ ThreadTest1()
     for (i = 0; i <= MAX_THREAD; i++) {
         Thread *t = new Thread("forked thread"); 
         t->Fork(SimpleThread, t->getThreadID());
-        SimpleThread(i)
+        SimpleThread(i);
     }
 }
 
@@ -63,8 +63,6 @@ ThreadTest()
     switch (testnum) {
     case 1:
 	ThreadTest1();
-    case 2:
-	ThreadTest2();
 	break;
     default:
 	printf("No test specified.\n");
