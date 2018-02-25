@@ -52,7 +52,7 @@ allocatedthreadID()
         }
     }
     if (i < MAX_THREAD) {
-        threadIDs[i] = 1; // 给未分配的项赋值为1
+        threadIDs[i] = 1; // 给未分配的项赋值为1，使之成为已分配项
         return i;
     } else {
         return -1;
