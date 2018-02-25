@@ -32,7 +32,32 @@
 //
 //	"threadName" is an arbitrary string, useful for debugging.
 //----------------------------------------------------------------------
-
+int
+Thread::getUserID()
+{
+    return userID;
+}
+int
+Thread::getThreadID()
+{
+    return threadID;
+}
+int
+allocatedthreadID()
+{
+    int i;
+    for (i = 1; i < MAX_THREAD; i++){
+        if (threadIDs[i] == 0){ // 寻找未被分配的项
+            break;
+        }
+    }
+    if (i < MAX_THREAD) {
+        threadIDs[i] = 1; // 给未分配的项赋值为1
+        return i;
+    } else {
+        return -1;
+    }
+}
 Thread::Thread(char* threadName)
 {
     name = threadName;
@@ -286,31 +311,7 @@ Thread::StackAllocate (VoidFunctionPtr func, int arg)
     machineState[InitialArgState] = arg;
     machineState[WhenDonePCState] = (int) ThreadFinish;
 }
-int
-Thread::getUserID()
-{
-    return userID;
-}
-int
-Thread::getThreadID()
-{
-    return threadID;
-}
-int allocatedthreadID()
-{
-    int i;
-    for (i = 1; i < MAX_THREAD; i++){
-        if (threadIDs[i] == 0){ // 寻找未被分配的项
-            break;
-        }
-    }
-    if (i < MAX_THREAD) {
-        threadIDs[i] = 1; // 给未分配的项赋值为1
-        return i;
-    } else {
-        return -1;
-    }
-}
+
 #ifdef USER_PROGRAM
 #include "machine.h"
 
