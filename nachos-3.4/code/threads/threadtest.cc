@@ -35,11 +35,7 @@ SimpleThread(int which)
 	printf("*** thread %d looped %d times\n", which, num);
         currentThread->Yield();
     }
-
-    int i;
-    for(i = 0; i < MAX_THREAD; i++){
-    printf("%d ",threadIDs[i]);
-    }
+    currentThread->Yield();
 }
 
 //----------------------------------------------------------------------
@@ -53,9 +49,16 @@ ThreadTest1()
 {
     DEBUG('t', "Entering ThreadTest1");
 
-    Thread *t = new Thread("forked thread");
+    Thread *t1 = new Thread("forked thread");
+    Thread *t2 = new Thread("forked thread");
+    Thread *t3 = new Thread("forked thread");
+    Thread *t4 = new Thread("forked thread");
 
-    t->Fork(SimpleThread, 1);
+    t1->Fork(SimpleThread, t1->getThreadID());
+    t2->Fork(SimpleThread, t2->getThreadID());
+    t3->Fork(SimpleThread, t3->getThreadID());
+    t4->Fork(SimpleThread, t4->getThreadID());
+
     SimpleThread(0);
 }
 

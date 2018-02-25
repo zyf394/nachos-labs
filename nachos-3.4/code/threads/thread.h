@@ -101,10 +101,13 @@ class Thread {
     void setStatus(ThreadStatus st) { status = st; }
     char* getName() { return (name); }
     void Print() { printf("%s, ", name); }
-
+    int getUserID();
+    int getThreadID();
+    
   private:
     // some of the private data for this class is listed above
-    
+    int userID;
+    int threadID;
     int* stack; 	 		// Bottom of the stack 
 					// NULL if this is the main thread
 					// (If NULL, don't deallocate stack)

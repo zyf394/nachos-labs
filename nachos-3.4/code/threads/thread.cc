@@ -19,6 +19,7 @@
 #include "switch.h"
 #include "synch.h"
 #include "system.h"
+#include "unistd.h"
 
 #define STACK_FENCEPOST 0xdeadbeef	// this is put at the top of the
 					// execution stack, for detecting 
@@ -41,6 +42,8 @@ Thread::Thread(char* threadName)
 #ifdef USER_PROGRAM
     space = NULL;
 #endif
+    userID = getuid();
+    threadID = allocatedthreadID();
 }
 
 //----------------------------------------------------------------------
@@ -62,6 +65,7 @@ Thread::~Thread()
     ASSERT(this != currentThread);
     if (stack != NULL)
 	DeallocBoundedArray((char *) stack, StackSize * sizeof(int));
+    threadIDs[threadID] = 0;
 }
 
 //----------------------------------------------------------------------
@@ -282,7 +286,32 @@ Thread::StackAllocate (VoidFunctionPtr func, int arg)
     machineState[InitialArgState] = arg;
     machineState[WhenDonePCState] = (int) ThreadFinish;
 }
-
+int
+Thread::getUserID()
+{
+    return userID;
+}
+int
+Thread::getThreadID()
+{
+    return threadID;
+}
+int
+Thread::allocatedthreadID()
+{
+    int i;
+    for (i = 1; i < MaxThread; i++){
+        if (threadIDs[i] == 0){ // 寻找未被分配的项
+            break;
+        }
+    }
+    if (i < MAX_THREAD) {
+        threadIDs[i] = 1; // 给未分配的项赋值为1
+        return i;
+    } else {
+        return -1;
+    }
+}
 #ifdef USER_PROGRAM
 #include "machine.h"
 
