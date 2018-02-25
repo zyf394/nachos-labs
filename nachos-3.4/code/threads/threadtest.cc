@@ -45,8 +45,8 @@ ThreadTest1()
     DEBUG('t', "Entering ThreadTest1");
     int i;
     for (i = 1; i <= MAX_THREAD; i++) {
-        Thread *t = new Thread("forked thread"); 
-        t->Fork(SimpleThread, t->getThreadID());
+        Thread *t = new Thread("test thread"); 
+        // t->Fork(SimpleThread, t->getThreadID());
         SimpleThread(i);
     }
 }
