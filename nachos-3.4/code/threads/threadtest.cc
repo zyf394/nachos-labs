@@ -28,13 +28,9 @@ int testnum = 1;
 
 void
 SimpleThread(int which)
-{
-    int num;
-    
-    for (num = 0; num < 5; num++) {
-	printf("*** thread name %s userid %d threadid %d looped %d times\n", currentThread->getName(), currentThread->getUserID(), currentThread->getThreadID(), num);
+{    
+	printf("*** thread name %s userid %d threadid %d looped %d times\n", currentThread->getName(), currentThread->getUserID(), currentThread->getThreadID(), which);
         currentThread->Yield();
-    }
     currentThread->Yield();
 }
 
@@ -48,18 +44,12 @@ void
 ThreadTest1()
 {
     DEBUG('t', "Entering ThreadTest1");
-
-    Thread *t1 = new Thread("forked thread");
-    Thread *t2 = new Thread("forked thread");
-    Thread *t3 = new Thread("forked thread");
-    Thread *t4 = new Thread("forked thread");
-
-    t1->Fork(SimpleThread, t1->getThreadID());
-    t2->Fork(SimpleThread, t2->getThreadID());
-    t3->Fork(SimpleThread, t3->getThreadID());
-    t4->Fork(SimpleThread, t4->getThreadID());
-
-    SimpleThread(0);
+    int i;
+    for (i = 0; i <= MAX_THREAD; i++) {
+        Thread *t = new Thread("forked thread"); 
+        t->Fork(SimpleThread, t->getThreadID());
+        SimpleThread(i)
+    }
 }
 
 //----------------------------------------------------------------------
@@ -73,6 +63,8 @@ ThreadTest()
     switch (testnum) {
     case 1:
 	ThreadTest1();
+    case 2:
+	ThreadTest2();
 	break;
     default:
 	printf("No test specified.\n");
