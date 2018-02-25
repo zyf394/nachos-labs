@@ -296,8 +296,7 @@ Thread::getThreadID()
 {
     return threadID;
 }
-int
-Thread::allocatedthreadID()
+int allocatedthreadID()
 {
     int i;
     for (i = 1; i < MaxThread; i++){
