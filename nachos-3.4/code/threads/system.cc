@@ -80,7 +80,12 @@ Initialize(int argc, char **argv)
     int argCount;
     char* debugArgs = "";
     bool randomYield = FALSE;
-
+#ifdef MAX_THREAD
+    for(int i = 0; i < MAX_THREAD; i++)
+    {
+        threadIDs[i] = 0;
+    }
+#endif
 #ifdef USER_PROGRAM
     bool debugUserProg = FALSE;	// single step user program
 #endif
@@ -161,13 +166,6 @@ Initialize(int argc, char **argv)
 
 #ifdef NETWORK
     postOffice = new PostOffice(netname, rely, 10);
-#endif
-
-#ifdef MAX_THREAD
-    for(int i = 0; i< MAX_THREAD; i++)
-    {
-        threadIDs[i] = 0;
-    }
 #endif
 }
 
