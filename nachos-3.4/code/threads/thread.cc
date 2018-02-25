@@ -46,17 +46,13 @@ int
 allocatedthreadID()
 {
     int i;
-    for (i = 1; i < MAX_THREAD; i++){
-        if (threadIDs[i] == 0){ // 寻找未被分配的项
-            break;
+    for (i = 0; i < MAX_THREAD; i++){
+        if (threadIDs[i] == 0) {
+            threadIDs[i] = 1; // 给未分配的项赋值为 1，使之成为已分配项
+            return i;
+        } else {
+            return -1;
         }
-    }
-    if (i < MAX_THREAD) {
-        threadIDs[i] = 1; // 给未分配的项赋值为1
-        printf("threadI will be %d", i);
-        return i;
-    } else {
-        return -1;
     }
 }
 Thread::Thread(char* threadName)
