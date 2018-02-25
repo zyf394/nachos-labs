@@ -62,7 +62,7 @@ allocatedthreadID()
 Thread::Thread(char* threadName)
 {
     int flag = allocatedthreadID();
-    if (flag == -1) printf("线程数达到上限，不能再分配线程！"\n);
+    if (flag == -1) printf("线程数达到上限，不能再分配线程！\n");
     ASSERT(flag != -1);
 
     name = threadName;
