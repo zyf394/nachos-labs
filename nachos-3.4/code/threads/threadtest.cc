@@ -48,7 +48,6 @@ ThreadTest1()
     for (i = 0; i <= MAX_THREAD; i++) {
         Thread *t = new Thread("forked thread"); 
         t->Fork(SimpleThread, t->getThreadID());
-        SimpleThread(i);
     }
 }
 
