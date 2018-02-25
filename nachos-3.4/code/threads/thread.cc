@@ -51,7 +51,6 @@ allocatedthreadID()
             break;
         }
     }
-    printf("allocatedThread %d", i);
     if (i < MAX_THREAD) {
         threadIDs[i] = 1; // 给未分配的项赋值为1
         return i;
