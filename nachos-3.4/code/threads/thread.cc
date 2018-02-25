@@ -299,7 +299,7 @@ Thread::getThreadID()
 int allocatedthreadID()
 {
     int i;
-    for (i = 1; i < MaxThread; i++){
+    for (i = 1; i < MAX_THREAD; i++){
         if (threadIDs[i] == 0){ // 寻找未被分配的项
             break;
         }
