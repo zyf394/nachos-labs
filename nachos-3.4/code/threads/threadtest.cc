@@ -46,7 +46,7 @@ ThreadTest1()
     int i;
     for (i = 1; i <= MAX_THREAD; i++) {
         Thread *t = new Thread("forked thread"); 
-        printf("*** thread name %s userid %d threadid %d looped %d times.\n", t->getName(), t->getUserID(), t->getThreadID(), which);
+        printf("*** thread name %s userid %d threadid %d looped %d times.\n", t->getName(), t->getUserID(), t->getThreadID(), i);
     }
 }
 
