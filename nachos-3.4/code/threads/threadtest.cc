@@ -50,6 +50,17 @@ ThreadTest1()
     }
 }
 
+void
+ThreadTest2()
+{
+    DEBUG('t', "Entering ThreadTest2");
+    int i;
+    for (i = 1; i <= MAX_THREAD; i++) {
+        Thread *t = new Thread("forked thread"); 
+        printf("*** thread name %s userid %d threadid %d looped %d times.\n", t->getName(), t->getUserID(), t->getThreadID(), i);
+    }
+}
+
 //----------------------------------------------------------------------
 // ThreadTest
 // 	Invoke a test routine.
@@ -61,6 +72,8 @@ ThreadTest()
     switch (testnum) {
     case 1:
 	ThreadTest1();
+    case 2:
+	ThreadTest2();
 	break;
     default:
 	printf("No test specified.\n");

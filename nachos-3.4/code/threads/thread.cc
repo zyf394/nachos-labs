@@ -269,7 +269,11 @@ Thread::Sleep ()
 static void ThreadFinish()    { currentThread->Finish(); }
 static void InterruptEnable() { interrupt->Enable(); }
 void ThreadPrint(int arg){ Thread *t = (Thread *)arg; t->Print(); }
+void MyThreadPrint(int arg) {
+    Thread *t = (Thread *)arg;
+    printf("*** thread name %s threadid %d status: %s \n", t->getName(), t->getThreadID(), ThreadStatusInChar[t->getStatus()]);
 
+}
 //----------------------------------------------------------------------
 // Thread::StackAllocate
 //	Allocate and initialize an execution stack.  The stack is
