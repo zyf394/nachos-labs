@@ -43,6 +43,11 @@ Thread::getThreadID()
     return threadID;
 }
 int
+Thread::getStatus()
+{
+    return status;
+}
+int
 allocatedthreadID()
 {
     int i;
